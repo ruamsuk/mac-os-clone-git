@@ -1,6 +1,7 @@
 # MacOsClone
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
+เป็นระบบที่ใช้ PrimeNG โดยดูตัวอย่างจากช่องยูทูป Developer thing https://youtu.be/ha9LY12yVrk ขอบตุณที่แบ่งปัน แม้จะฟังไม่ออก
 
 ## Development server
 
