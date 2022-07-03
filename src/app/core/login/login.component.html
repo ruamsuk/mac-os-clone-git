@@ -1,5 +1,5 @@
 <div class="login-screen">
-  <img src="assets/images/golf-ball.png"
+  <img src="../../../assets/styles/images/golf-ball.png"
        alt="golf-ball"
        class="login-screen__logo">
 
@@ -10,7 +10,7 @@
       <i class="pi pi-arrow-circle-right" *ngIf="password.value"></i>
       <input
         #password
-        (keyup.enter)="openDesktop(password.value)"
+        (keyup.enter)="openDesktop()"
         autofocus
         pInputText
         autocomplete="off"

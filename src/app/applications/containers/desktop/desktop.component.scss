@@ -1,0 +1,12 @@
+@import "_helpers";
+
+.desktop-screen {
+  @include bg-image($uri: '/assets/images/desktop-background.jpg', $size: cover, $position: center);
+
+  //background-image: url('/assets/images/desktop-background.jpg');
+  //background-size: cover;
+  //background-position: center;
+
+  height: 100vh;
+  overflow: hidden;
+}

@@ -1,17 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedUiModule } from '../shared-ui/shared-ui.module';
-
+import { ClockComponent } from './components/clock/clock.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ClockComponent
+  ],
   imports: [
     CommonModule,
     SharedUiModule
   ],
   exports: [
-    SharedUiModule
+    SharedUiModule,
+    ClockComponent
   ]
 })
 export class SharedModule { }

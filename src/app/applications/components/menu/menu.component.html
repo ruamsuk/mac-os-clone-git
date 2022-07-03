@@ -1,0 +1,19 @@
+<p-menubar
+  [model]="menuItems">
+
+  <ng-template pTemplate="start">
+    <img src="assets/images/primeng.svg" alt="prime-logo" height="40" class="mr-2">
+<!--    <i class="pi pi-prime"></i>-->
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <i class="pi pi-wifi"></i>
+    <i
+      (click)="toggleSettingsDialog()"
+      class="pi pi-mobile"
+      style="transform: rotateZ(90deg);"></i>
+    <i class="pi pi-search" (click)="openSpotlight()"></i>
+    <app-clock></app-clock>
+  </ng-template>
+
+</p-menubar>

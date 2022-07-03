@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openDesktop(value: string) {
+  openDesktop() {
     this.router.navigate(['desktop']).finally();
   }
 
