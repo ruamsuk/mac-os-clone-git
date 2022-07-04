@@ -5,6 +5,13 @@
   justify-content: $jc;
 }
 
+@mixin font($size: inherit, $weight: inherit, $color: inherit) {
+  font-family: 'Yantramanav', sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+
 @mixin bg-image($uri, $size, $position) {
   background-image: url($uri);
   background-size: $size;

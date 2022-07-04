@@ -6,11 +6,15 @@ import { ApplicationsRoutingModule } from './applications-routing.module';
 import { DesktopComponent } from './containers';
 import { DockComponent } from './components';
 import { MenuComponent } from './components';
+import { LaunchpadComponent } from './containers';
+import { TerminalComponent } from './containers';
 
 const components = [
   DesktopComponent,
   DockComponent,
-  MenuComponent
+  LaunchpadComponent,
+  MenuComponent,
+  TerminalComponent,
 ];
 
 

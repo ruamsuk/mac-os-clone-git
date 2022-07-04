@@ -4,6 +4,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { InputTextModule } from 'primeng/inputtext';
 import { DockModule } from 'primeng/dock';
 import { MenubarModule } from 'primeng/menubar';
+import { SidebarModule } from 'primeng/sidebar';
 
 
 
@@ -16,7 +17,8 @@ import { MenubarModule } from 'primeng/menubar';
     ProgressBarModule,
     InputTextModule,
     DockModule,
-    MenubarModule
+    MenubarModule,
+    SidebarModule
   ]
 })
 export class SharedUiModule { }

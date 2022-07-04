@@ -1,7 +1,16 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnInit,
+  Output
+} from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { TooltipOptions } from 'primeng/tooltip';
 import { dockItems } from '../../../shared/config/dock-items';
+import { LAUNCHPAD } from '../../../shared/config/applications';
+import { Store } from '../../../shared/store/store';
 
 @Component({
   selector: 'app-dock',
@@ -10,6 +19,7 @@ import { dockItems } from '../../../shared/config/dock-items';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DockComponent implements OnInit {
+  @Output() launchpadOpened = new EventEmitter
 
   dockItems: MenuItem[] = [];
 
@@ -20,7 +30,9 @@ export class DockComponent implements OnInit {
     showDelay: 1000
   };
 
-  constructor(private cd: ChangeDetectorRef) { }
+  constructor(private cd: ChangeDetectorRef,
+              private store: Store
+  ) { }
 
   ngOnInit(): void {
     this.dockItems = this.getDockItems();
@@ -35,7 +47,13 @@ export class DockComponent implements OnInit {
           tooltipLabel: dockItem,
           ...this.defaultTooltipOptions
         },
-        command: () => { }
+        command: () => {
+          if (dockItem === LAUNCHPAD) {
+            this.launchpadOpened.emit();
+          }
+
+          this.store.setActiveApplication(dockItem);
+        }
       };
     })
   }
