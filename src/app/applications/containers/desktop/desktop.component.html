@@ -1,6 +1,10 @@
-<div class="desktop-screen">
+<div class="desktop-screen" (click)="unselectFolders()">
   <div class="desktop-screen__menu">
     <app-menu></app-menu>
+  </div>
+
+  <div class="desktop-screen__folders">
+    <app-folders [folders]="(folders$ | async) || []"></app-folders>
   </div>
 
   <div class="desktop-screen__dock">

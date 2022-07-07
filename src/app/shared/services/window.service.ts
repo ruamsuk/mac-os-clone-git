@@ -17,6 +17,7 @@ export class WindowService {
     if (component) {
       const dialogConfig: DynamicDialogConfig = {
         showHeader: false,
+        width: '50%',
         styleClass: activeApplication
       };
 

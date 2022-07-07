@@ -2,7 +2,7 @@ import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
-  EventEmitter,
+  EventEmitter, OnDestroy,
   OnInit,
   Output
 } from '@angular/core';
@@ -11,6 +11,7 @@ import { TooltipOptions } from 'primeng/tooltip';
 import { dockItems } from '../../../shared/config/dock-items';
 import { LAUNCHPAD } from '../../../shared/config/applications';
 import { Store } from '../../../shared/store/store';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-dock',
@@ -18,9 +19,10 @@ import { Store } from '../../../shared/store/store';
   styleUrls: ['./dock.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DockComponent implements OnInit {
-  @Output() launchpadOpened = new EventEmitter
+export class DockComponent implements OnInit, OnDestroy {
+  @Output() launchpadOpened = new EventEmitter;
 
+  onDestroy$ = new Subject();
   dockItems: MenuItem[] = [];
 
   defaultTooltipOptions: TooltipOptions = {
@@ -36,6 +38,14 @@ export class DockComponent implements OnInit {
 
   ngOnInit(): void {
     this.dockItems = this.getDockItems();
+    this.store.trashItemsCount$
+      .pipe(takeUntil(this.onDestroy$))
+      .subscribe(count => this.updateTrashIcon(count))
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next(true);
+    this.onDestroy$.complete();
   }
 
   getDockItems() {
@@ -58,4 +68,18 @@ export class DockComponent implements OnInit {
     })
   }
 
+  private updateTrashIcon(trashItemCount: number) {
+    this.dockItems = this.dockItems
+      .map(docItem => {
+        const icon = trashItemCount > 0 && docItem.label === 'trash'
+          ? 'trash-full'
+          : docItem.icon
+
+        return {
+          ...docItem,
+          icon
+        };
+      });
+    this.cd.markForCheck();
+  }
 }

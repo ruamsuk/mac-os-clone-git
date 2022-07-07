@@ -1,15 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { TerminalService } from 'primeng/terminal';
+import { TerminalCommand } from '../../../shared/config/terminal-command';
 
 @Component({
   selector: 'app-terminal',
   templateUrl: './terminal.component.html',
-  styleUrls: ['./terminal.component.scss']
+  styleUrls: ['./terminal.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [TerminalService]
 })
-export class TerminalComponent implements OnInit {
+export class TerminalComponent {
 
-  constructor() { }
+  constructor(private terminalService: TerminalService) {
+    this.terminalService.commandHandler.subscribe(command => {
+      const response = this.getCommandResponse(command);
+      this.terminalService.sendResponse(response);
+    });
+  }
 
-  ngOnInit(): void {
+  private getCommandResponse(command: string) {
+    switch (command.toUpperCase()) {
+      case TerminalCommand.Author: return 'Developer Thing';
+      case TerminalCommand.Ui: return 'PrimeNg';
+      case TerminalCommand.Framework: return 'Angular';
+      default: return 'Unknown command';
+    }
   }
 
 }

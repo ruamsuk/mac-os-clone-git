@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { filter, mergeMap, Subject, takeUntil } from 'rxjs';
 import { Store } from '../../../shared/store/store';
 import { WindowService } from '../../../shared/services/window.service';
@@ -12,6 +12,7 @@ import { DESKTOP } from '../../../shared/config/applications';
 export class DesktopComponent implements OnInit, OnDestroy {
 
   onDestroy$ = new Subject();
+  folders$ = this.store.desktopFolders$;
   launchpadOpened = false;
 
   constructor(
@@ -27,6 +28,15 @@ export class DesktopComponent implements OnInit, OnDestroy {
         mergeMap(app => this.windowService.open(app))
       )
       .subscribe(_ => this.store.setActiveApplication())
+  }
+
+  @HostListener('document: keydown', ['$event'])
+  onKeydown(event: KeyboardEvent) {
+    this.store.deleteSelectedFolder()
+  }
+
+  unselectFolders() {
+    this.store.unselectAllFolders();
   }
 
   ngOnDestroy(): void {

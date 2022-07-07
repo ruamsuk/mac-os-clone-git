@@ -5,6 +5,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DockModule } from 'primeng/dock';
 import { MenubarModule } from 'primeng/menubar';
 import { SidebarModule } from 'primeng/sidebar';
+import { TerminalModule } from 'primeng/terminal';
 
 
 
@@ -18,7 +19,8 @@ import { SidebarModule } from 'primeng/sidebar';
     InputTextModule,
     DockModule,
     MenubarModule,
-    SidebarModule
+    SidebarModule,
+    TerminalModule
   ]
 })
 export class SharedUiModule { }
