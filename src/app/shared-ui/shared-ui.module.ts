@@ -6,6 +6,7 @@ import { DockModule } from 'primeng/dock';
 import { MenubarModule } from 'primeng/menubar';
 import { SidebarModule } from 'primeng/sidebar';
 import { TerminalModule } from 'primeng/terminal';
+import { ContextMenuModule } from 'primeng/contextmenu';
 
 
 
@@ -20,7 +21,8 @@ import { TerminalModule } from 'primeng/terminal';
     DockModule,
     MenubarModule,
     SidebarModule,
-    TerminalModule
+    TerminalModule,
+    ContextMenuModule
   ]
 })
 export class SharedUiModule { }

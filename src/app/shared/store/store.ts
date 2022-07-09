@@ -46,7 +46,23 @@ export class Store extends BaseStore {
           selected: state.selectedFolderIds.includes(f.id)
         }
       });
-  })
+  });
+
+  trashFolders$: Observable<Folder[]> = this.select((state) => {
+    return state.folders
+      .filter(f => state.deletedFolderIds.includes(f.id));
+  });
+
+  tutorialFolders$: Observable<Folder[]> = this.select((state) => {
+    return state.folders
+      .filter(f => f.parentFolderId === 2 && !state.deletedFolderIds.includes(f.id))
+      .map(f => {
+        return {
+          ...f,
+          selected: state.selectedFolderIds.includes(f.id)
+        }
+      });
+  });
 
   activeApplication$: Observable<string> = this.select((state) => {
     return state.activeApplication
@@ -90,6 +106,21 @@ export class Store extends BaseStore {
       deletedFolderIds: [
         ...this.state.deletedFolderIds,
         ...this.state.selectedFolderIds
+      ]
+    });
+  }
+
+  addNewFolder() {
+    const milliseconds = new Date().getTime();
+    const newFolder: Folder = {
+      id: milliseconds,
+      title: `${milliseconds}`,
+      parentFolderId: 0
+    };
+    this.setState({
+      folders: [
+        ...this.state.folders,
+        newFolder
       ]
     });
   }

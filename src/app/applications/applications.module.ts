@@ -11,6 +11,8 @@ import { LaunchpadComponent } from './containers';
 import { TerminalComponent } from './containers';
 import { FoldersComponent } from './containers';
 import { FolderIconComponent } from './components';
+import { TrashComponent } from './containers';
+import { FinderComponent } from './containers';
 
 const components = [
   DesktopComponent,
@@ -20,7 +22,9 @@ const components = [
   TerminalComponent,
   DialogControlsComponent,
   FoldersComponent,
-  FolderIconComponent
+  FolderIconComponent,
+  FinderComponent,
+  TrashComponent,
 ];
 
 

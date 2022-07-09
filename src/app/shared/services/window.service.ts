@@ -26,11 +26,13 @@ export class WindowService {
     return throwError(() => 'Could not find component to display')
   }
 
-  private findComponentByApplicationId(applicationId: string) {
+  private findComponentByApplicationId = (applicationId: string) => {
     switch (applicationId) {
-      case apps.TERMINAL: return appComponents.TerminalComponent
+      case apps.TERMINAL: return appComponents.TerminalComponent;
+      case apps.FINDER: return appComponents.FinderComponent;
+      case apps.TRASH: return appComponents.TrashComponent;
 
       default: return null;
     }
-  }
+  };
 }

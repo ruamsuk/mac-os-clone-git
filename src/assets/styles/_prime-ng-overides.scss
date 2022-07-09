@@ -1,3 +1,5 @@
+@import "helpers";
+
 .p-terminal {
   border: 0;
 }
@@ -6,4 +8,8 @@
   border: 0;
   border-radius: 0.5rem;
   padding: 0;
+}
+
+.context-menu {
+  @include font($size: 0.8rem, $weight: 500);
 }

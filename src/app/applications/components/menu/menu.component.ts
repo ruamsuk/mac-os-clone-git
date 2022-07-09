@@ -12,7 +12,7 @@ import {
   styleUrls: ['./menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MenuComponent implements OnInit {
+export class MenuComponent {
 
   @Output() spotlightOpened = new EventEmitter();
   isSettingsDialogDisplayed = false;
@@ -40,11 +40,6 @@ export class MenuComponent implements OnInit {
       label: 'Help'
     }
   ];
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
 
   openSpotlight() {
     this.spotlightOpened.emit();
