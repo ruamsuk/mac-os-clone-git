@@ -17,7 +17,9 @@ import {
   DialogControlsComponent,
   FolderIconComponent,
   MenuComponent,
-  FinderSidebarComponent
+  FinderSidebarComponent,
+  SidebarItemComponent,
+  SidebarGroupComponent
 } from './components';
 
 const components = [
@@ -31,13 +33,16 @@ const components = [
   FolderIconComponent,
   FinderComponent,
   TrashComponent,
-  FinderSidebarComponent
+  FinderSidebarComponent,
+  SidebarItemComponent,
+  SidebarGroupComponent,
 ];
 
 
 @NgModule({
   declarations: [
     ...components,
+
   ],
   imports: [
     CommonModule,

@@ -4,7 +4,9 @@
   </div>
 
   <div class="finder-sidebar__groups">
-  <!--  sidebar group -->
-  <!--  sidebar item -->
+    <app-sidebar-group
+      [sidebarGroup]="sidebarGroup"
+      *ngFor="let sidebarGroup of sidebarGroups">
+    </app-sidebar-group>
   </div>
 </div>

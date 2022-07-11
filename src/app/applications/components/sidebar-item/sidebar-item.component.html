@@ -1,0 +1,15 @@
+<div class="sidebar-item">
+  <img
+    *ngIf="sidebarItem.image"
+    class="sidebar-item__image"
+    [src]="'assets/images' + sidebarItem.image"
+    [alt]="sidebarItem.label">
+
+  <i
+    [style.color]="sidebarItem.label"
+    *ngIf="sidebarItem.icon"></i>
+
+  <span class="sidebar-item__title">
+    {{ sidebarItem.label }}
+  </span>
+</div>
